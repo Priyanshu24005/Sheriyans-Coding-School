@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
+.left-section {
+  height: 100%;
+  width: 100%;
+  background-color: #fcc60c;
+}
+
+.right-section {
+  height: 100%;
+  width: 40%;
+  left: 60%;
+  position: absolute;
+  background-color: #fae9b5;
+}
+
+img.logo {
+  height: 100px;
+  width: 150px;
+  padding: 40px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  width: 55%;
+  margin-left: 5%;
+}
+
+.type {
+  word-spacing: 10px;
+  font-family: "Poppins", sans-serif;
+}
+
+.name {
+  font-size: 60px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+}
+
+.description {
+  font-family: "Poppins", sans-serif;
+}
+
+.menu {
+  position: absolute;
+  font-size: 40px;
+  right: 10%;
+  top: 5%;
+}
+
+.pikachu {
+  position: absolute;
+  right: 55%;
+  top: 20%;
+  height: 450px;
+}
+
+.footer-logo {
+  position: absolute;
+  height: 13%;
+  width: 10%;
+  bottom: 0;
+}
+.dots {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.dots span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #f8c500;
+}
+
+.dots .active {
+  background: black;
+}
