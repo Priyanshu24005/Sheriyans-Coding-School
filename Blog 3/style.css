@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #050505;
+  color: white;
+  font-family: "Inter", sans-serif;
+  padding: 40px 60px;
+}
+
+.title {
+  text-align: center;
+  font-size: 90px;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+}
+
+.line {
+  width: 180px;
+  height: 3px;
+  background: #ff8c1a;
+  margin: 20px auto 60px;
+  border-radius: 20px;
+}
+
+.drink-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.drink-card {
+  background: #0d0d0d;
+  border: 1px solid #1d1d1d;
+  border-radius: 30px;
+  padding: 25px;
+  text-align: center;
+  position: relative;
+  transition: 0.3s;
+}
+
+.drink-card:hover {
+  transform: translateY(-10px);
+}
+
+.active {
+  border: 1px solid #ff8c1a;
+  box-shadow: 0 0 25px rgba(255, 140, 26, 0.3);
+}
+
+.badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border: 1px solid #ff8c1a;
+  color: #ff8c1a;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 14px;
+}
+
+.drink-card img {
+  width: 100%;
+  height: 330px;
+  object-fit: contain;
+  margin-top: 20px;
+}
+
+.drink-card h2 {
+  font-size: 42px;
+  font-family: "Cormorant Garamond", serif;
+  margin-top: 10px;
+}
+
+.drink-card p {
+  color: #9d9d9d;
+  margin-top: 8px;
+  font-size: 18px;
+}
+
+.small-line {
+  width: 60px;
+  height: 2px;
+  background: #ff8c1a;
+  margin: 25px auto;
+}
+
+.drink-card h3 {
+  color: #ff8c1a;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.special-section {
+  margin-top: 40px;
+  background: #0b0b0b;
+  border-radius: 35px;
+  border: 1px solid #1b1b1b;
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  gap: 50px;
+}
+
+.food-image img {
+  width: 380px;
+  border-radius: 20px;
+}
+
+.special-content span {
+  color: #ff8c1a;
+  letter-spacing: 5px;
+  font-size: 18px;
+}
+
+.special-content h1 {
+  font-size: 70px;
+  font-family: "Cormorant Garamond", serif;
+  margin-top: 20px;
+  line-height: 1.1;
+}
+
+.special-content h3 {
+  color: #c9c9c9;
+  margin-top: 20px;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.special-content p {
+  color: #8a8a8a;
+  font-size: 22px;
+  line-height: 1.8;
+  margin-top: 30px;
+  max-width: 800px;
+}
+
+.special-content button {
+  margin-top: 35px;
+  padding: 18px 38px;
+  background: transparent;
+  border: 1px solid #ff8c1a;
+  border-radius: 40px;
+  color: #ff8c1a;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.special-content button:hover {
+  background: #ff8c1a;
+  color: black;
+}
+
+footer {
+  margin-top: 40px;
+  border-top: 1px solid #2a2a2a;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #b5b5b5;
+  font-size: 18px;
+}
+
+footer ul {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.socials {
+  display: flex;
+  gap: 20px;
+}
