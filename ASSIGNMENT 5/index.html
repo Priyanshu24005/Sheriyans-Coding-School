@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dribbble Clone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.cdnfonts.com/css/mona-sans" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 18s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+  </style>
+</head>
+<body class="bg-white font-sans">
+
+  <!-- Navbar -->
+  <nav class="flex items-center justify-between px-8 py-5 border-b border-gray-100">
+    <div class="flex items-center gap-8">
+      <img src="https://cdn.worldvectorlogo.com/logos/dribbble-4.svg" alt="Dribbble" class="h-7" />
+      <div class="hidden lg:flex items-center gap-6 text-sm font-semibold text-gray-800">
+        <a href="#" class="hover:text-pink-500 flex items-center gap-1">Explore <i class="ri-arrow-down-s-line"></i></a>
+        <a href="#" class="hover:text-pink-500 flex items-center gap-1">Hire a Designer <i class="ri-arrow-down-s-line"></i></a>
+        <a href="#" class="hover:text-pink-500">Find Jobs</a>
+        <a href="#" class="hover:text-pink-500">Blog</a>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <button class="hidden sm:block text-sm font-semibold text-gray-800 hover:text-pink-500">Sign up</button>
+      <button class="bg-gray-900 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-700 transition-colors">Log in</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="max-w-4xl mx-auto text-center px-6 mt-20">
+    <h1 class="text-6xl font-serif leading-tight text-gray-900">
+      Discover the world's<br />top designers
+    </h1>
+    <p class="text-lg text-gray-500 mt-6 max-w-xl mx-auto">
+      Explore work from the most talented and accomplished designers ready to take on your next project.
+    </p>
+    <div class="flex items-center bg-gray-100 rounded-full px-5 py-2 mt-8 max-w-xl mx-auto">
+      <input type="text" placeholder="What are you looking for?"
+        class="bg-transparent outline-none flex-1 text-sm font-medium text-gray-700 placeholder-gray-400 py-3" />
+      <button class="bg-pink-500 text-white w-11 h-11 rounded-full flex items-center justify-center text-lg shrink-0" style="background:#EC5E95">
+        <i class="ri-search-line"></i>
+      </button>
+    </div>
+    <button class="bg-gray-900 text-white px-7 py-3 rounded-full mt-6 text-sm font-semibold hover:bg-gray-700 transition-colors">
+      Get Started
+    </button>
+    <div class="flex flex-wrap items-center justify-center gap-2 mt-6">
+      <span class="text-sm font-medium text-gray-400">Trending searches</span>
+      <span class="bg-gray-100 hover:bg-gray-200 px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer transition-colors">landing page</span>
+      <span class="bg-gray-100 hover:bg-gray-200 px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer transition-colors">e-commerce</span>
+      <span class="bg-gray-100 hover:bg-gray-200 px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer transition-colors">mobile app</span>
+      <span class="bg-gray-100 hover:bg-gray-200 px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer transition-colors">logo design</span>
+      <span class="bg-gray-100 hover:bg-gray-200 px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer transition-colors">dashboard</span>
+      <span class="bg-gray-100 hover:bg-gray-200 px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer transition-colors">icons</span>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <section class="mt-16 px-8">
+    <div class="flex items-center gap-3 overflow-x-auto pb-2">
+      <div class="shrink-0 border border-gray-200 rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl px-4 py-2 flex flex-col items-center cursor-pointer hover:bg-gray-50 transition-colors">
+        <span class="text-sm font-medium">Popular</span>
+        <i class="ri-arrow-down-s-line text-base"></i>
+      </div>
+      <span class="shrink-0 bg-gray-100 px-4 py-2 rounded-full text-sm font-semibold cursor-pointer hover:bg-gray-200 transition-colors">Discover</span>
+      <span class="shrink-0 px-4 py-2 rounded-full text-sm font-semibold cursor-pointer hover:bg-gray-100 transition-colors text-gray-700">Animation</span>
+      <span class="shrink-0 px-4 py-2 rounded-full text-sm font-semibold cursor-pointer hover:bg-gray-100 transition-colors text-gray-700">Branding</span>
+      <span class="shrink-0 px-4 py-2 rounded-full text-sm font-semibold cursor-pointer hover:bg-gray-100 transition-colors text-gray-700">Illustration</span>
+      <span class="shrink-0 px-4 py-2 rounded-full text-sm font-semibold cursor-pointer hover:bg-gray-100 transition-colors text-gray-700">Mobile</span>
+      <span class="shrink-0 px-4 py-2 rounded-full text-sm font-semibold cursor-pointer hover:bg-gray-100 transition-colors text-gray-700">Print</span>
+      <span class="shrink-0 px-4 py-2 rounded-full text-sm font-semibold cursor-pointer hover:bg-gray-100 transition-colors text-gray-700">Product Design</span>
+      <span class="shrink-0 px-4 py-2 rounded-full text-sm font-semibold cursor-pointer hover:bg-gray-100 transition-colors text-gray-700">Typography</span>
+      <span class="shrink-0 px-4 py-2 rounded-full text-sm font-semibold cursor-pointer hover:bg-gray-100 transition-colors text-gray-700">Web Design</span>
+      <button class="ml-auto shrink-0 flex items-center gap-2 border border-gray-200 rounded-full px-5 py-2 text-sm font-medium hover:bg-gray-50 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 5h12M5 8h6M7 11h4"/>
+        </svg>
+        Filters
+      </button>
+    </div>
+    <div class="border-t border-gray-100 mt-3"></div>
+  </section>
+
+  <!-- Shot Grid -->
+  <section class="px-8 mt-8 pb-20">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+
+      <!-- Card 1 -->
+      <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 bg-gray-100">
+        <img src="https://cdn.dribbble.com/userupload/18907024/file/original-5e2099f7a0dfc8a56da9dea27c01efd0.jpg?format=webp&resize=400x300&vertical=center"
+          class="w-full h-full object-cover group-hover:brightness-75 transition-all duration-300" alt="Abstract Gradients" />
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
+          <div class="flex items-center justify-between">
+            <span class="text-white text-sm font-semibold drop-shadow truncate max-w-[55%]">Abstract Gradients</span>
+            <div class="flex items-center gap-2">
+              <div class="flex items-center gap-1 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-semibold text-gray-600">
+                <i class="ri-heart-line text-sm"></i><span>24</span>
+              </div>
+              <div class="flex items-center justify-center bg-white border border-gray-200 rounded-full w-8 h-8 text-gray-600">
+                <i class="ri-bookmark-line text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 (video) -->
+      <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 bg-gray-100">
+        <video autoplay loop muted playsinline
+          class="w-full h-full object-cover group-hover:brightness-75 transition-all duration-300"
+          src="https://cdn.dribbble.com/userupload/18911729/file/original-31b3d222d1c9ab101d5d197eb36b672a.mp4"></video>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
+          <div class="flex items-center justify-between">
+            <span class="text-white text-sm font-semibold drop-shadow truncate max-w-[55%]">Motion Concept</span>
+            <div class="flex items-center gap-2">
+              <div class="flex items-center gap-1 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-semibold text-gray-600">
+                <i class="ri-heart-line text-sm"></i><span>58</span>
+              </div>
+              <div class="flex items-center justify-center bg-white border border-gray-200 rounded-full w-8 h-8 text-gray-600">
+                <i class="ri-bookmark-line text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 bg-gray-100">
+        <img src="https://cdn.dribbble.com/userupload/18901622/file/original-3ea38dfb1ce6061d88bea856bc45c1c9.jpg?format=webp&resize=400x300&vertical=center"
+          class="w-full h-full object-cover group-hover:brightness-75 transition-all duration-300" alt="Brand Identity" />
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
+          <div class="flex items-center justify-between">
+            <span class="text-white text-sm font-semibold drop-shadow truncate max-w-[55%]">Brand Identity</span>
+            <div class="flex items-center gap-2">
+              <div class="flex items-center gap-1 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-semibold text-gray-600">
+                <i class="ri-heart-line text-sm"></i><span>103</span>
+              </div>
+              <div class="flex items-center justify-center bg-white border border-gray-200 rounded-full w-8 h-8 text-gray-600">
+                <i class="ri-bookmark-line text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 bg-gray-100">
+        <img src="https://cdn.dribbble.com/userupload/18916825/file/still-56dc65e9d214a0ab95778b11745b4a77.png?format=webp&resize=400x300&vertical=center"
+          class="w-full h-full object-cover group-hover:brightness-75 transition-all duration-300" alt="UI Components" />
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
+          <div class="flex items-center justify-between">
+            <span class="text-white text-sm font-semibold drop-shadow truncate max-w-[55%]">UI Components</span>
+            <div class="flex items-center gap-2">
+              <div class="flex items-center gap-1 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-semibold text-gray-600">
+                <i class="ri-heart-line text-sm"></i><span>77</span>
+              </div>
+              <div class="flex items-center justify-center bg-white border border-gray-200 rounded-full w-8 h-8 text-gray-600">
+                <i class="ri-bookmark-line text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 bg-gray-100">
+        <img src="https://cdn.dribbble.com/userupload/18860878/file/original-bb09066c4b66752294e2c8d69ee7eab7.png?format=webp&resize=400x300&vertical=center"
+          class="w-full h-full object-cover group-hover:brightness-75 transition-all duration-300" alt="App Design" />
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
+          <div class="flex items-center justify-between">
+            <span class="text-white text-sm font-semibold drop-shadow truncate max-w-[55%]">App Design</span>
+            <div class="flex items-center gap-2">
+              <div class="flex items-center gap-1 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-semibold text-gray-600">
+                <i class="ri-heart-line text-sm"></i><span>45</span>
+              </div>
+              <div class="flex items-center justify-center bg-white border border-gray-200 rounded-full w-8 h-8 text-gray-600">
+                <i class="ri-bookmark-line text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 bg-gray-100">
+        <img src="https://cdn.dribbble.com/userupload/15858473/file/original-4b3c43159ee3f725177f53d844da029e.png?format=webp&resize=400x300&vertical=center"
+          class="w-full h-full object-cover group-hover:brightness-75 transition-all duration-300" alt="Typography Art" />
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
+          <div class="flex items-center justify-between">
+            <span class="text-white text-sm font-semibold drop-shadow truncate max-w-[55%]">Typography Art</span>
+            <div class="flex items-center gap-2">
+              <div class="flex items-center gap-1 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-semibold text-gray-600">
+                <i class="ri-heart-line text-sm"></i><span>91</span>
+              </div>
+              <div class="flex items-center justify-center bg-white border border-gray-200 rounded-full w-8 h-8 text-gray-600">
+                <i class="ri-bookmark-line text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 bg-gray-100">
+        <img src="https://cdn.dribbble.com/userupload/18865610/file/original-12d4aa04f52edb097fb1c7c7afd299be.jpg?format=webp&resize=400x300&vertical=center"
+          class="w-full h-full object-cover group-hover:brightness-75 transition-all duration-300" alt="Product Mockup" />
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
+          <div class="flex items-center justify-between">
+            <span class="text-white text-sm font-semibold drop-shadow truncate max-w-[55%]">Product Mockup</span>
+            <div class="flex items-center gap-2">
+              <div class="flex items-center gap-1 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-semibold text-gray-600">
+                <i class="ri-heart-line text-sm"></i><span>62</span>
+              </div>
+              <div class="flex items-center justify-center bg-white border border-gray-200 rounded-full w-8 h-8 text-gray-600">
+                <i class="ri-bookmark-line text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 bg-gray-100">
+        <img src="https://cdn.dribbble.com/userupload/18745258/file/original-d639b12b53f0aaff20ebde03f9e8f566.png?format=webp&resize=400x300&vertical=center"
+          class="w-full h-full object-cover group-hover:brightness-75 transition-all duration-300" alt="Icon Set" />
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
+          <div class="flex items-center justify-between">
+            <span class="text-white text-sm font-semibold drop-shadow truncate max-w-[55%]">Icon Set</span>
+            <div class="flex items-center gap-2">
+              <div class="flex items-center gap-1 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-semibold text-gray-600">
+                <i class="ri-heart-line text-sm"></i><span>38</span>
+              </div>
+              <div class="flex items-center justify-center bg-white border border-gray-200 rounded-full w-8 h-8 text-gray-600">
+                <i class="ri-bookmark-line text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 bg-gray-100">
+        <img src="https://cdn.dribbble.com/userupload/18827550/file/still-de60b218b87ac00cf7cfe46096701d1e.png?format=webp&resize=400x300&vertical=center"
+          class="w-full h-full object-cover group-hover:brightness-75 transition-all duration-300" alt="Rapid Rabbit Logo" />
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
+          <div class="flex items-center justify-between">
+            <span class="text-white text-sm font-semibold drop-shadow truncate max-w-[55%]">Rapid Rabbit Logo</span>
+            <div class="flex items-center gap-2">
+              <div class="flex items-center gap-1 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-semibold text-gray-600">
+                <i class="ri-heart-line text-sm"></i><span>130</span>
+              </div>
+              <div class="flex items-center justify-center bg-white border border-gray-200 rounded-full w-8 h-8 text-gray-600">
+                <i class="ri-bookmark-line text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 10 -->
+      <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 bg-gray-100">
+        <img src="https://cdn.dribbble.com/userupload/18911411/file/original-d7cfc941b6d908e23895ee6fb3e9864f.jpg?format=webp&resize=400x300&vertical=center"
+          class="w-full h-full object-cover group-hover:brightness-75 transition-all duration-300" alt="Dashboard UI" />
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
+          <div class="flex items-center justify-between">
+            <span class="text-white text-sm font-semibold drop-shadow truncate max-w-[55%]">Dashboard UI</span>
+            <div class="flex items-center gap-2">
+              <div class="flex items-center gap-1 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-semibold text-gray-600">
+                <i class="ri-heart-line text-sm"></i><span>85</span>
+              </div>
+              <div class="flex items-center justify-center bg-white border border-gray-200 rounded-full w-8 h-8 text-gray-600">
+                <i class="ri-bookmark-line text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 11 -->
+      <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 bg-gray-100">
+        <img src="https://cdn.dribbble.com/userupload/18851563/file/original-3f5d517b52e3e5c9918aa6f29414e487.jpg?format=webp&resize=400x300&vertical=center"
+          class="w-full h-full object-cover group-hover:brightness-75 transition-all duration-300" alt="Editorial Design" />
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
+          <div class="flex items-center justify-between">
+            <span class="text-white text-sm font-semibold drop-shadow truncate max-w-[55%]">Editorial Design</span>
+            <div class="flex items-center gap-2">
+              <div class="flex items-center gap-1 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-semibold text-gray-600">
+                <i class="ri-heart-line text-sm"></i><span>49</span>
+              </div>
+              <div class="flex items-center justify-center bg-white border border-gray-200 rounded-full w-8 h-8 text-gray-600">
+                <i class="ri-bookmark-line text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 12 -->
+      <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 bg-gray-100">
+        <img src="https://cdn.dribbble.com/userupload/18869949/file/original-9407889cf2190177eafb7b2469647b8f.jpg?format=webp&resize=400x300&vertical=center"
+          class="w-full h-full object-cover group-hover:brightness-75 transition-all duration-300" alt="Packaging Design" />
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
+          <div class="flex items-center justify-between">
+            <span class="text-white text-sm font-semibold drop-shadow truncate max-w-[55%]">Packaging Design</span>
+            <div class="flex items-center gap-2">
+              <div class="flex items-center gap-1 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-semibold text-gray-600">
+                <i class="ri-heart-line text-sm"></i><span>71</span>
+              </div>
+              <div class="flex items-center justify-center bg-white border border-gray-200 rounded-full w-8 h-8 text-gray-600">
+                <i class="ri-bookmark-line text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="py-14 border-t border-gray-100 overflow-hidden">
+    <div class="marquee-track items-center gap-20 opacity-80">
+      <!-- set 1 -->
+      <img src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418ce2c404b364300ba31_client-logo-04.svg"  alt="logo" class="h-8 grayscale" />
+      <img src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418ce9f1b45e141bf28b5_client-logo-03.svg"  alt="logo" class="h-8 grayscale" />
+      <img src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418ce6a0062cf2d279e35_client-logo-02.svg"  alt="logo" class="h-8 grayscale" />
+      <img src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418af3b2b766cebaba02d_client-logo-01.svg"  alt="logo" class="h-8 grayscale" />
+      <img src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418cea9dabe252e43b0c0_client-logo-07.svg"  alt="logo" class="h-8 grayscale" />
+      <img src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418af3b2b766cebaba02d_client-logo-01.svg"  alt="logo" class="h-8 grayscale" />
+      <img src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418ce2c404b364300ba31_client-logo-04.svg"  alt="logo" class="h-8 grayscale" />
+      <img src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418cea9dabe252e43b0c0_client-logo-07.svg"  alt="logo" class="h-8 grayscale" />
+      <img src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418ce9f1b45e141bf28b5_client-logo-03.svg"  alt="logo" class="h-8 grayscale" />
+      <img src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418cea9dabe252e43b0c0_client-logo-07.svg"  alt="logo" class="h-8 grayscale" />
+      <img src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418af3b2b766cebaba02d_client-logo-01.svg"  alt="logo" class="h-8 grayscale" />
+      <img src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418ce2c404b364300ba31_client-logo-04.svg"  alt="logo" class="h-8 grayscale" />
+      <img src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418cea9dabef95143b0c1_client-logo-06.svg"  alt="logo" class="h-8 grayscale" />
+      <img src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418ce9f1b45e141bf28b5_client-logo-03.svg"  alt="logo" class="h-8 grayscale" />
+      <img src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418af3b2b766cebaba02d_client-logo-01.svg"  alt="logo" class="h-8 grayscale" />
+      <img src="https://cdn.prod.website-files.com/63c3f1995d4c3581bbc944b5/63c418cea9dabe252e43b0c0_client-logo-07.svg"  alt="logo" class="h-8 grayscale" />
+    </div>
+  </section>
+
+  <footer class="border-t border-gray-100 px-8 py-12">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+   
+      <a href="#" class="font-serif italic text-3xl text-gray-900 shrink-0">Dribbble</a>
+      <!-- Nav links -->
+      <nav class="flex flex-wrap gap-x-8 gap-y-3 text-sm font-medium text-gray-700">
+        <a href="#" class="hover:text-gray-900 transition-colors">For designers</a>
+        <a href="#" class="hover:text-gray-900 transition-colors">Hire talent</a>
+        <a href="#" class="hover:text-gray-900 transition-colors">Inspiration</a>
+        <a href="#" class="hover:text-gray-900 transition-colors">Advertising</a>
+        <a href="#" class="hover:text-gray-900 transition-colors">Blog</a>
+        <a href="#" class="hover:text-gray-900 transition-colors">About</a>
+        <a href="#" class="hover:text-gray-900 transition-colors">Careers</a>
+        <a href="#" class="hover:text-gray-900 transition-colors">Support</a>
+      </nav>
+      <!-- Social icons -->
+      <div class="flex items-center gap-4 text-gray-700 text-xl shrink-0">
+        <a href="#" class="hover:text-gray-900 transition-colors"><i class="ri-twitter-x-line"></i></a>
+        <a href="#" class="hover:text-gray-900 transition-colors"><i class="ri-facebook-box-line"></i></a>
+        <a href="#" class="hover:text-gray-900 transition-colors"><i class="ri-instagram-line"></i></a>
+        <a href="#" class="hover:text-gray-900 transition-colors"><i class="ri-pinterest-line"></i></a>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-gray-400">
+      <div class="flex items-center gap-4">
+        <span>©2025 Dribbble</span>
+        <a href="#" class="hover:text-gray-600 transition-colors">Terms</a>
+        <a href="#" class="hover:text-gray-600 transition-colors">Privacy</a>
+        <a href="#" class="hover:text-gray-600 transition-colors">Cookies</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:text-gray-600 transition-colors">Jobs</a>
+        <a href="#" class="hover:text-gray-600 transition-colors">Designers</a>
+        <a href="#" class="hover:text-gray-600 transition-colors">Freelancers</a>
+        <a href="#" class="hover:text-gray-600 transition-colors">Tags</a>
+        <a href="#" class="hover:text-gray-600 transition-colors">Places</a>
+        <a href="#" class="hover:text-gray-600 transition-colors">Resources</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
