@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Finance Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Remix Icons -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css"
+        rel="stylesheet"
+    >
+
+    <!-- Chart JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>FinTrack</h2>
+            <span>Enterprise Finance</span>
+        </div>
+
+        <nav>
+
+            <a href="#" class="active">
+                <i class="ri-dashboard-line"></i>
+                Dashboard
+            </a>
+
+            <a href="./pages/Settings.html">
+                <i class="ri-settings-3-line"></i>
+                Settings
+            </a>
+
+        </nav>
+
+        <button class="add-btn">
+            <i class="ri-add-line"></i>
+            Add Transaction
+        </button>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main">
+
+        <header>
+
+            <div>
+
+                <h2>Financial Overview</h2>
+                <p>Real-time tracking application</p>
+
+            </div>
+
+            <div class="user">
+
+                <span id="username">priyanshu</span>
+
+                <button id="logout">
+                    <i class="ri-logout-box-r-line"></i>
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+        <!-- Modal Overlay -->
+
+        <div class="overlay"></div>
+
+        <!-- Dashboard Cards -->
+
+        <section class="cards">
+
+            <div class="card">
+
+                <p>Current Balance</p>
+
+                <h3 id="balance">$0.00</h3>
+
+            </div>
+
+            <div class="card">
+
+                <p>Total Income</p>
+
+                <h3 class="green" id="income">$0.00</h3>
+
+            </div>
+
+            <div class="card">
+
+                <p>Total Expense</p>
+
+                <h3 class="red" id="expense">$0.00</h3>
+
+            </div>
+
+            <div class="card">
+
+                <p>Total Transactions</p>
+
+                <h3 id="transactions">0</h3>
+
+            </div>
+
+        </section>
+
+        <!-- Chart -->
+
+        <section class="middle">
+
+            <div class="chart">
+
+                <h3>Cash Flow Analysis</h3>
+
+                <div class="chart-box">
+
+                    <canvas id="cashChart"></canvas>
+
+                </div>
+
+            </div>
+
+            <!-- Preferences -->
+
+            <div class="preferences">
+
+                <h3>Preferences</h3>
+
+                <div class="pref">
+
+                    <span>Dark Mode</span>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="darkToggle"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+                <button class="reset">
+                    <i class="ri-delete-bin-line"></i>
+                    Reset All Data
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Transactions -->
+
+        <section class="table-card">
+
+            <div class="table-header">
+
+                <h3>All Transactions</h3>
+
+                <div class="filters">
+
+                    <input
+                        type="text"
+                        id="search"
+                        placeholder="Search transaction..."
+                    >
+
+                    <select id="categoryFilter">
+
+                        <option value="All">
+                            All Categories
+                        </option>
+
+                        <option>Food & Dining</option>
+
+                        <option>Shopping</option>
+
+                        <option>Recharge & Bills</option>
+
+                        <option>Petrol & Auto</option>
+
+                        <option>Utilities</option>
+
+                        <option>Salary</option>
+
+                        <option>Entertainment</option>
+
+                        <option>Other</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <!-- Filter Buttons -->
+
+            <div class="type-filters">
+
+                <button
+                    class="filter-btn active"
+                    data-filter="All"
+                >
+                    All Types
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="Income"
+                >
+                    Income Only
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="Expense"
+                >
+                    Expense Only
+                </button>
+
+            </div>
+
+            <table>
+
+                <thead>
+
+                <tr>
+
+                    <th>Date</th>
+
+                    <th>Description</th>
+
+                    <th>Category</th>
+
+                    <th>Amount</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody class="table-item">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
