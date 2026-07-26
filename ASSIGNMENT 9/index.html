@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<script>
+  // applied immediately, before the rest of the page renders, so there's no
+  // flash of the wrong theme on load
+  var savedTheme = localStorage.getItem("dashboard-theme");
+  if (savedTheme === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }
+</script>
+</head>
+<body>
+
+  <!-- top bar: always visible -->
+  <header class="topbar">
+    <div class="brand">📌 Daily Dashboard</div>
+
+    <div class="topbar-widgets">
+      <div id="datetime" class="datetime">
+        <span id="time-text">--:--:--</span>
+        <span id="date-text">-- --- ----</span>
+      </div>
+
+      <button id="theme-toggle" class="theme-toggle" title="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <!-- ============ DASHBOARD (home screen) ============ -->
+  <main id="dashboard" class="dashboard">
+
+    <!-- weather widget, always visible on dashboard -->
+    <section class="weather-card" id="weather-card">
+      <div class="weather-top">
+        <h3>Weather</h3>
+        <button id="weather-refresh" class="icon-btn" title="Refresh">↻</button>
+      </div>
+      <div id="weather-body" class="weather-body">
+        <p class="weather-status">Getting your location…</p>
+      </div>
+    </section>
+
+    <!-- feature cards -->
+    <div class="card-grid">
+      <button class="feature-card" data-target="todo-section">
+        <span class="card-icon">✅</span>
+        <span class="card-title">Todo List</span>
+        <span class="card-sub" id="todo-sub">0 tasks</span>
+      </button>
+
+      <button class="feature-card" data-target="planner-section">
+        <span class="card-icon">🗓️</span>
+        <span class="card-title">Daily Planner</span>
+        <span class="card-sub">Plan your hours</span>
+      </button>
+
+      <button class="feature-card" data-target="goals-section">
+        <span class="card-icon">🎯</span>
+        <span class="card-title">Daily Goals</span>
+        <span class="card-sub" id="goals-sub">0 of 0 done</span>
+      </button>
+
+      <button class="feature-card" data-target="pomodoro-section">
+        <span class="card-icon">⏱️</span>
+        <span class="card-title">Pomodoro Timer</span>
+        <span class="card-sub">Focus sessions</span>
+      </button>
+
+      <button class="feature-card" data-target="quote-section">
+        <span class="card-icon">💡</span>
+        <span class="card-title">Motivation</span>
+        <span class="card-sub">Get inspired</span>
+      </button>
+    </div>
+  </main>
+
+  <!-- ============ FEATURE VIEWS (hidden by default) ============ -->
+
+  <!-- Todo List -->
+  <section class="feature-view" id="todo-section">
+    <div class="feature-header">
+      <button class="back-btn" data-back>← Back</button>
+      <h2>Todo List</h2>
+    </div>
+
+    <form id="todo-form" class="inline-form">
+      <input type="text" id="todo-input" placeholder="Add a task…" autocomplete="off">
+      <button type="submit">Add</button>
+    </form>
+
+    <ul id="todo-list" class="item-list"></ul>
+  </section>
+
+  <!-- Daily Planner -->
+  <section class="feature-view" id="planner-section">
+    <div class="feature-header">
+      <button class="back-btn" data-back>← Back</button>
+      <h2>Daily Planner</h2>
+    </div>
+    <div id="planner-list" class="planner-list"></div>
+  </section>
+
+  <!-- Daily Goals -->
+  <section class="feature-view" id="goals-section">
+    <div class="feature-header">
+      <button class="back-btn" data-back>← Back</button>
+      <h2>Daily Goals</h2>
+    </div>
+
+    <form id="goal-form" class="inline-form">
+      <input type="text" id="goal-input" placeholder="Add a goal for today…" autocomplete="off">
+      <button type="submit">Add</button>
+    </form>
+
+    <p id="goal-progress" class="progress-text">0 of 0 completed</p>
+    <ul id="goal-list" class="item-list"></ul>
+  </section>
+
+  <!-- Pomodoro Timer -->
+  <section class="feature-view" id="pomodoro-section">
+    <div class="feature-header">
+      <button class="back-btn" data-back>← Back</button>
+      <h2>Pomodoro Timer</h2>
+    </div>
+
+    <div class="pomodoro-box">
+      <p id="pomodoro-label" class="pomodoro-label">Work Session</p>
+      <p id="pomodoro-display" class="pomodoro-display">25:00</p>
+      <div class="pomodoro-controls">
+        <button id="pomodoro-start">Start</button>
+        <button id="pomodoro-pause">Pause</button>
+        <button id="pomodoro-reset">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Motivation Quote -->
+  <section class="feature-view" id="quote-section">
+    <div class="feature-header">
+      <button class="back-btn" data-back>← Back</button>
+      <h2>Motivation</h2>
+    </div>
+
+    <div class="quote-box">
+      <p id="quote-text" class="quote-text">Click below for a dose of motivation.</p>
+      <p id="quote-author" class="quote-author"></p>
+      <button id="quote-btn">New Quote</button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

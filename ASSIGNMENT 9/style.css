@@ -1,0 +1,604 @@
+:root {
+  /* light theme (default) */
+  --bg: #f2f4f7;
+  --bg-card: #ffffff;
+  --text: #1c1f26;
+  --text-dim: #666c78;
+  --border: #e0e3e8;
+  --accent: #3f6fd1;
+  --accent-text: #ffffff;
+  --danger: #d1495b;
+  --success: #2e9e6d;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+[data-theme="dark"] {
+  --bg: #14161c;
+  --bg-card: #1e2129;
+  --text: #eceef2;
+  --text-dim: #9198a6;
+  --border: #2b2f38;
+  --accent: #6d93ea;
+  --accent-text: #10121a;
+  --danger: #e0687a;
+  --success: #4bc491;
+  --shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* consistent keyboard-focus ring across the whole app */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- top bar ---------- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+.brand {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.topbar-widgets {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.datetime {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.3;
+}
+
+#time-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1rem;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  transform: rotate(-8deg);
+}
+
+/* ---------- dashboard ---------- */
+.dashboard {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  /* background driven by JS via body[data-time-of-day] */
+}
+
+.weather-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.weather-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weather-top h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1rem;
+  border-radius: 4px;
+  padding: 4px;
+  transition: color 0.15s ease, transform 0.4s ease;
+}
+
+.icon-btn:hover {
+  color: var(--accent);
+}
+
+.icon-btn:active {
+  transform: rotate(180deg);
+}
+
+.weather-body {
+  margin-top: 8px;
+  min-height: 54px; /* keeps the card from jumping between loading/loaded states */
+}
+
+.weather-status {
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.weather-main {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.weather-temp {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.weather-condition {
+  color: var(--text-dim);
+}
+
+.weather-details {
+  margin-top: 6px;
+  display: flex;
+  gap: 16px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  text-align: left;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.feature-card:active {
+  transform: translateY(0);
+}
+
+.card-icon {
+  font-size: 1.6rem;
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.card-sub {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+/* ---------- feature views ---------- */
+.feature-view {
+  display: none;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 24px;
+  animation: fade-in 0.15s ease;
+}
+
+.feature-view.active {
+  display: block;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* hide dashboard when a feature is open */
+.dashboard.hidden {
+  display: none;
+}
+
+.feature-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.feature-header h2 {
+  margin: 0;
+}
+
+.back-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.back-btn:hover {
+  border-color: var(--accent);
+  background: var(--bg);
+}
+
+/* ---------- shared form / list styles ---------- */
+.inline-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.inline-form input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.95rem;
+  transition: border-color 0.15s ease;
+}
+
+.inline-form input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.inline-form button {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+  transition: opacity 0.15s ease;
+}
+
+.inline-form button:hover {
+  opacity: 0.9;
+}
+
+.item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+/* thin, theme-aware scrollbar for the longer lists (todo/goals/planner) */
+.item-list::-webkit-scrollbar,
+.planner-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.item-list::-webkit-scrollbar-thumb,
+.planner-list::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.item-list::-webkit-scrollbar-track,
+.planner-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.item-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  animation: fade-in 0.15s ease;
+}
+
+.item-row .item-text {
+  flex: 1;
+  word-break: break-word;
+  cursor: pointer; /* the todo item-text doubles as the "complete" toggle */
+}
+
+.item-row.completed .item-text {
+  text-decoration: line-through;
+  color: var(--text-dim);
+}
+
+.item-row.important {
+  border-left: 3px solid var(--accent);
+}
+
+.item-row button {
+  background: none;
+  border: none;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.item-row button:hover {
+  background: var(--bg);
+}
+
+.item-row button.danger:hover {
+  color: var(--danger);
+}
+
+.item-row button.star.active {
+  color: #e8a33d;
+}
+
+.item-row button.star:hover {
+  color: #e8a33d;
+}
+
+/* custom checkbox for goals, so it matches the theme instead of the
+   browser's native (and inconsistent) checkbox rendering */
+.item-row input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg);
+  flex-shrink: 0;
+  display: grid;
+  place-content: center;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.item-row input[type="checkbox"]:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.item-row input[type="checkbox"]:checked::after {
+  content: "";
+  width: 5px;
+  height: 9px;
+  border: solid var(--accent-text);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+/* shown by JS when a list has no items yet */
+.empty-state {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  padding: 20px 0;
+}
+
+.progress-text {
+  color: var(--text-dim);
+  margin: 0 0 12px 0;
+}
+
+/* ---------- planner ---------- */
+.planner-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.planner-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 4px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s ease;
+}
+
+.planner-row.current-hour {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border-radius: 6px;
+}
+
+.planner-time {
+  width: 70px;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.planner-row input {
+  flex: 1;
+  border: none;
+  background: none;
+  color: var(--text);
+  padding: 6px 4px;
+  font-size: 0.9rem;
+  border-bottom: 1px solid transparent;
+}
+
+.planner-row input:focus {
+  outline: none;
+  border-bottom: 1px solid var(--accent);
+}
+
+.planner-row input::placeholder {
+  color: var(--text-dim);
+  opacity: 0.6;
+}
+
+/* ---------- pomodoro ---------- */
+.pomodoro-box {
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px 20px;
+}
+
+.pomodoro-label {
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.85rem;
+  margin: 0 0 10px 0;
+}
+
+.pomodoro-display {
+  font-size: 4rem;
+  font-weight: 700;
+  margin: 0 0 24px 0;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.2s ease;
+}
+
+/* subtle cue that a break is running vs a work session */
+.pomodoro-box.break .pomodoro-display {
+  color: var(--success);
+}
+
+.pomodoro-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pomodoro-controls button {
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-weight: 600;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.pomodoro-controls button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+#pomodoro-start {
+  background: var(--accent);
+  color: var(--accent-text);
+  border: none;
+}
+
+#pomodoro-start:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+/* ---------- quote ---------- */
+.quote-box {
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px 24px;
+}
+
+.quote-text {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  margin: 0 0 12px 0;
+  min-height: 2.6em; /* reserves space so the layout doesn't jump while loading */
+  transition: opacity 0.15s ease;
+}
+
+.quote-author {
+  color: var(--text-dim);
+  margin: 0 0 20px 0;
+  min-height: 1.2em;
+}
+
+.quote-box button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+  transition: opacity 0.15s ease;
+}
+
+.quote-box button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 500px) {
+  .topbar {
+    padding: 12px 16px;
+  }
+  .dashboard, .feature-view {
+    padding: 16px;
+  }
+  .pomodoro-display {
+    font-size: 3rem;
+  }
+}
